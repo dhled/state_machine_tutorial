@@ -2,7 +2,7 @@
 
 import smach
 import rospy
-import qt_smach_viewer.introspection
+from qt_smach_viewer.introspection import IntrospectionServer.introspection
 
 
 ##-----------------------------------------------------------------------------------

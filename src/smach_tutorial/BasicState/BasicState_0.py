@@ -2,7 +2,7 @@
 
 import smach
 import rospy
-import qt_smach_viewer
+from qt_smach_viewer.introspection import IntrospectionServer
 
 # Exercise 0
 
@@ -38,7 +38,7 @@ def main():
     # Create a StateMachine with the previous function
     Wait_sm = WaitSM()
     # Setup  a IntrospectionServer to see in Smach Viewer
-    introspection_server = qt_smach_viewer.IntrospectionServer( Wait_sm)
+    introspection_server = IntrospectionServer( Wait_sm)
     # start the server
     introspection_server.start()
     # Wait  before the execution start

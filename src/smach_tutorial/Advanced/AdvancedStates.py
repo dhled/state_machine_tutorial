@@ -2,7 +2,7 @@
 
 import rospy
 import smach
-import qt_smach_viewer
+from qt_smach_viewer.introspection import IntrospectionServer
 
 from std_msgs.msg import String, Bool, Empty
 
@@ -117,7 +117,7 @@ def main():
 
     Wait_sm = WaitSM()
 
-    introspection_server = qt_smach_viewer.IntrospectionServer( Wait_sm)
+    introspection_server = IntrospectionServer( Wait_sm)
     introspection_server.start()
 
     Wait_sm.execute()

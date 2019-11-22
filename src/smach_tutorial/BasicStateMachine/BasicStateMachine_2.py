@@ -2,7 +2,7 @@
 
 import rospy
 import smach
-import qt_smach_viewer
+from qt_smach_viewer.introspection import IntrospectionServer
 
 
 # Exercice 2
@@ -60,7 +60,7 @@ def NestedStateMachine():
 
 def main():
     SimpleSM = NestedStateMachine()
-    introspection_server = qt_smach_viewer.IntrospectionServer(SimpleSM)
+    introspection_server = IntrospectionServer(SimpleSM)
     introspection_server.start()
     rospy.sleep(3.0)
     outcome = SimpleSM.execute()

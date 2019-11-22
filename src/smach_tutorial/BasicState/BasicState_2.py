@@ -2,7 +2,7 @@
 
 import smach
 import rospy
-import qt_smach_viewer
+from qt_smach_viewer.introspection import IntrospectionServer
 
 
 # Exercise 2: Read a message from a userdata
@@ -54,7 +54,7 @@ def main():
 
     SimpleSM = SetPrintStateMachine()
 
-    introspection_server = qt_smach_viewer.IntrospectionServer(SimpleSM)
+    introspection_server = IntrospectionServer(SimpleSM)
     introspection_server.start()
     rospy.sleep(3.0)
     outcome = SimpleSM.execute()
