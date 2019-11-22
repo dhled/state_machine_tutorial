@@ -3,7 +3,7 @@
 import rospy
 import smach
 import random
-import smach_ros
+import qt_smach_viewer
 
 ##Wait state for stating
 
@@ -61,7 +61,7 @@ def main():
 
     Simple_sm = SimpleSM()
 
-    introspection_server = smach_ros.IntrospectionServer('SM', Simple_sm, '/SM_root')
+    introspection_server = qt_smach_viewer.IntrospectionServer(Simple_sm)
     introspection_server.start()
     rospy.sleep(3.0)
     outcome = Simple_sm.execute()

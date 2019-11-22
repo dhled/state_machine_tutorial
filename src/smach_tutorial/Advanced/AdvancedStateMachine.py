@@ -4,7 +4,7 @@ import rospy
 import smach
 import tf
 import actionlib
-import smach_ros
+import qt_smach_viewer
 
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal, MoveBaseResult
@@ -241,7 +241,7 @@ def main():
 
     Trajectory_sm = MovingSM()
 
-    introspection_server = smach_ros.IntrospectionServer('SM', Trajectory_sm, '/SM_root')
+    introspection_server = qt_smach_viewer.IntrospectionServer(Trajectory_sm)
     introspection_server.start()
 
     Trajectory_sm.execute()
@@ -253,7 +253,7 @@ def main1():
 
     FullTrajectory_sm = FullTrajectorySM()
 
-    introspection_server = smach_ros.IntrospectionServer('SM', FullTrajectory_sm, '/SM_root')
+    introspection_server = qt_smach_viewer.IntrospectionServer(FullTrajectory_sm)
     introspection_server.start()
 
     FullTrajectory_sm.execute()

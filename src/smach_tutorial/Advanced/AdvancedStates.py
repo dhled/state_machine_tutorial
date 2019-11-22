@@ -2,7 +2,7 @@
 
 import rospy
 import smach
-import smach_ros
+import qt_smach_viewer
 
 from std_msgs.msg import String, Bool, Empty
 
@@ -34,6 +34,7 @@ class MoveBase_ac(smach.State):
     #this state connect to the action client and make the robot move
     def __init__(self):
        smach.State.__init__(self, outcomes=["succeeded","aborted","preempted"], input_keys=["goal"])
+       
        self.action_client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
        self._tosv = 10.0 #timeout server
        self._toaction = 60.0 #timeout action
@@ -116,7 +117,7 @@ def main():
 
     Wait_sm = WaitSM()
 
-    introspection_server = smach_ros.IntrospectionServer('SM', Wait_sm, '/SM_root')
+    introspection_server = qt_smach_viewer.IntrospectionServer( Wait_sm)
     introspection_server.start()
 
     Wait_sm.execute()

@@ -2,7 +2,7 @@
 
 import rospy
 import smach
-import smach_ros
+import qt_smach_viewer
 
 
 class Set(smach.State):
@@ -49,7 +49,7 @@ def SetPrintStateMachine():
 
 def main():
     SimpleSM = SetPrintStateMachine()
-    introspection_server = smach_ros.IntrospectionServer('SM', SimpleSM, '/SM_root')
+    introspection_server = qt_smach_viewer.IntrospectionServer(SimpleSM)
     introspection_server.start()
     rospy.sleep(3.0)
     outcome = SimpleSM.execute()
